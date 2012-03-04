@@ -61,3 +61,13 @@ uint16_t read( uint8_t *address, uint8_t *p_data, uint16_t len ) {
   asm( "IM 10" );
   asm( "SYSCALL" );
 }
+
+uint16_t uart_write( uint8_t port, uint8_t *p_data, uint8_t len ) {
+  asm( "IM 11" );
+  asm( "SYSCALL" );
+}
+
+uint16_t uart_read( uint8_t port, uint8_t *p_data, uint8_t len ) {
+  asm( "IM 12" );
+  asm( "SYSCALL" );
+}

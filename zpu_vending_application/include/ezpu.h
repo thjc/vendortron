@@ -81,3 +81,17 @@ extern uint16_t  write( uint8_t address, uint8_t *p_data, uint16_t len );
 // Upon return with one or more bytes of data *address will contain an id for the external device
 // Returns the number of bytes read
 extern uint16_t  read( uint8_t *address, uint8_t *p_data, uint16_t len );
+
+// Writes data to uart device
+// Port specifies the uart number to use (0 or 1 for internal uarts)
+// The data in the buffer pointed to by *p_data is with a length of len is written
+// This is a blocking call and will return when all the data has been placed on the uart fifo
+// Returns the number of bytes written (will be less than specified if a failure has occurred)
+extern uint8_t uart_write( uint8_t port, uint8_t *p_data, uint8_t len );
+
+// Reads data from uart device
+// Port specifies the uart number to use (0 or 1 for internal uarts)
+// len specifies the maximum number of bytes to read, this should be at least 16 bytes or some bytes may be lost
+// The data will be stored in the buffer pointed to by *p_data
+// Returns the number of bytes read, 0 indicates no data was available
+extern uint8_t uart_read( uint8_t port, uint8_t *p_data, uint8_t len );

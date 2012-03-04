@@ -22,6 +22,12 @@ int main ( void ) {
       */
     }
     
+    ret = uart_read(0,cmd,16);
+    if (ret > 0)
+    {
+      send(cmd,ret);
+    }
+    
   }
   //print( "Hello World!\n" );
 	return( 0 );
